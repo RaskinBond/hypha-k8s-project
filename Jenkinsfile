@@ -10,7 +10,7 @@ pipeline {
         stage("Create an EKS Cluster") {
             steps {
                 script {
-                    dir('./jenkins-pipeline-deploy-to-eks-main/terraform') {
+                    dir('jenkins-pipeline-deploy-to-eks-main/terraform') {
                         sh "terraform init"
                         sh "terraform apply --auto-approve"
                     }
@@ -20,7 +20,7 @@ pipeline {
         stage("Deploy to EKS") {
             steps {
                 script {
-                    dir('./jenkins-pipeline-deploy-to-eks-main/kubernetes') {
+                    dir('jenkins-pipeline-deploy-to-eks-main/kubernetes') {
                         sh "aws eks update-kubeconfig --name myapp-eks-cluster"
                         sh "kubectl apply -f nginx-deployment.yaml"
                         sh "kubectl apply -f nginx-service.yaml"
