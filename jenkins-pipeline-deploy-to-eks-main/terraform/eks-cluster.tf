@@ -6,7 +6,7 @@ module "eks" {
 
     cluster_endpoint_public_access  = true
 
-    vpc_id = module.myapp-vpc.vpc_id
+    vpc_id     = module.myapp-vpc.vpc_id
     subnet_ids = module.myapp-vpc.private_subnets
 
     tags = {
@@ -16,8 +16,8 @@ module "eks" {
 
     eks_managed_node_groups = {
         dev = {
-            min_size = 1
-            max_size = 3
+            min_size     = 1
+            max_size     = 3
             desired_size = 2
 
             instance_types = ["t2.micro"]
